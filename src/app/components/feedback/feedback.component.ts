@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class FeedbackComponent {
 
+  feedback = {
+    ratingValue:'',
+    comment:''
+  }
+
+  submitFeedback() {
+console.log("feedback will be submitted: ",this.feedback)
+  }
 }
