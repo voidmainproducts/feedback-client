@@ -19,7 +19,7 @@
  <div>
    <ul class="nav navbar-nav nav-right">
      <li class="nav-item">
-       <a class="nav-link"><span>{{getUserFullName()}}</span></a>
+       <span class="nav-link" [title]="getUserEmail()"><span>{{getUserFullName()}}</span></span>
      </li>
      <li class="nav-item">
        <a class="nav-link logout" (click)="logout()">Logout</a>

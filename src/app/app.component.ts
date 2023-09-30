@@ -25,12 +25,19 @@ export class AppComponent {
   }
 
   isAdmin() {
-    return true;
+    return this.currentUser && this.currentUser.role === 'ADMIN';
   }
 
   getUserFullName() {
     if(this.auth.currentUser) {
       return this.currentUser.firstName + " " + this.currentUser.lastName;
+    }
+    return '';
+  }
+
+  getUserEmail() {
+    if(this.auth.currentUser) {
+      return this.currentUser.email;
     }
     return '';
   }
