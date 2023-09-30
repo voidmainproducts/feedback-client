@@ -12,6 +12,9 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { RegisterComponent } from './components/register/register.component';
 import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
+import { FeedbackTableComponent } from './feedback-table/feedback-table.component';
+import {AdminComponent} from "./administration/admin/admin.component";
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {ErrorInterceptor} from "./interceptors/error.interceptor";
     PageNotFoundComponent,
     FeedbackComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    FeedbackTableComponent,
+    AdminComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +35,11 @@ import {ErrorInterceptor} from "./interceptors/error.interceptor";
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},],
+  exports: [
+    FeedbackTableComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

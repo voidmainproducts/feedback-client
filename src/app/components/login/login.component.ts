@@ -14,6 +14,7 @@ export class LoginComponent {
     email:'',
     password:''
   }
+  errorMessage:string = ''
 
   constructor(private http : HttpClient, private router : Router, private auth: AuthService) { }
 
@@ -25,10 +26,12 @@ export class LoginComponent {
 
 
   login(userData: any) {
+    this.errorMessage = '';
     this.auth.login(userData).subscribe(data => {
       console.log("success", data);
       this.router.navigate(['dashboard']);
     }, err => {
+      this.errorMessage = "Invalid Credentials"
       console.log("error: ", err);
     });
   }

@@ -6,6 +6,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {FeedbackComponent} from "./components/feedback/feedback.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {AdminComponent} from "./administration/admin/admin.component";
+import {NotAuthorizedComponent} from "./components/not-authorized/not-authorized.component";
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
@@ -13,9 +15,10 @@ const routes: Routes = [
   {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
   {path:"feedback", component: FeedbackComponent, canActivate: [AuthGuard]},
   {path:"register", component: RegisterComponent},
+  {path:"not-authorized", component: NotAuthorizedComponent},
   {
     path:"admin",
-    loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule),
+    component:AdminComponent,
     canActivate: [AuthGuard]
   },
 
